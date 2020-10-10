@@ -1,7 +1,7 @@
-const Order = require('../../../models/order')
-const moment = require('moment')
-function orderController () {
-    return {
+ const Order = require('../../../models/order')
+ const moment = require('moment')
+ function orderController () {
+     return {
         store(req, res) {
             // Validate request 
             const { phone, address } = req.body
@@ -41,11 +41,11 @@ function orderController () {
             const order = await Order.findById(req.params.id)
             // Authorize user
             if(req.user._id.toString() === order.customerId.toString()) {
-                return res.render('customers/singleOrder', { order })
+                return res.render('customers/singleOrder', { order: order })
             }
             return  res.redirect('/')
-        }
-    }
-}
+         }
+     }
+ }
 
-module.exports = orderController
+ module.exports = orderController

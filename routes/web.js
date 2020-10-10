@@ -21,12 +21,12 @@ function initRoutes(app) {
     app.get('/cart', cartController().index)
     app.post('/update-cart', cartController().update)
 
-    // Customer routes
+    //  Customer routes
     app.post('/orders', auth, orderController().store)
     app.get('/customer/orders', auth, orderController().index)
     app.get('/customer/orders/:id', auth, orderController().show)
 
-    // Admin routes
+    //  Admin routes
     app.get('/admin/orders', admin, adminOrderController().index)
     app.post('/admin/order/status', admin, statusController().update)
 }
